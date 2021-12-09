@@ -1,8 +1,9 @@
 from datetime import datetime, timezone
+from websites.abstract_website import AbstrcatWebsite
 
-from clients.firestore import Firestore
+# from clients.firestore import Firestore
 
-class Dotesports():
+class Dotesports(AbstrcatWebsite):
     def __init__(self, browser):
         self.browser = browser
 #         self.firestore = Firestore()
@@ -12,12 +13,12 @@ class Dotesports():
         articles = self.browser.find_elements_by_tag_name("article")
         article_data_list = []
         for article in articles:
-            article_data = self.extract_data(article)
+            article_data = self._extract_data(article)
             article_data_list.append(article_data)
             
         return article_data_list
         
-    def extract_data(self, article):
+    def _extract_data(self, article):
         article_data = {}
         article_data["is_original"] = False
         article_data["author"] = article.find_element_by_class_name("author").text

@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from clients.firestore import Firestore
+# from clients.firestore import Firestore
 
 class Gosugamers():
     def __init__(self, browser):
